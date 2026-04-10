@@ -92,4 +92,4 @@ jobs:
       with:
         context: .
         push: true
-        tags: ${{ secrets.DOCKERHUB_USERNAME }}/fastapi-calculator:latest
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/fastapi-calculation-model:latest
