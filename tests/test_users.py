@@ -11,7 +11,7 @@ from app.security import get_password_hash, verify_password
 # Use a separate test database to avoid dropping dev data
 TEST_DATABASE_URL = os.getenv(
     "TEST_DATABASE_URL", 
-    "postgresql://postgres:postgres@localhost:5432/test_calculator_db"
+    "postgresql://postgres:postgres@localhost:5432/test_db"
 )
 
 engine = create_engine(TEST_DATABASE_URL)

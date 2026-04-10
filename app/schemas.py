@@ -1,4 +1,4 @@
-from pydantic import BaseModel, EmailStr, model_validator
+from pydantic import BaseModel, EmailStr, model_validator, ConfigDict
 from datetime import datetime
 from typing import Optional
 from app.models import OperationType # Import the Enum
@@ -14,8 +14,7 @@ class UserRead(UserBase):
     id: int
     created_at: datetime
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 # --- New Calculation Schemas ---
 
@@ -39,5 +38,4 @@ class CalculationRead(CalculationBase):
     user_id: Optional[int] = None
     created_at: datetime
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
