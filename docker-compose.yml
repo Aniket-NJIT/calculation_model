@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  # 1. The PostgreSQL Database Container
+  postgres_db:
+    image: postgres:15
+    container_name: local_postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data # Saves your data so it isn't lost on restart
+
+  # 2. The pgAdmin UI Container
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: local_pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres_db # Tells Docker to start Postgres before starting pgAdmin
+
+# Define the volume for data persistence
+volumes:
+  postgres_data:
