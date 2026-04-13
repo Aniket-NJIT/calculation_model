@@ -80,16 +80,16 @@ The test suite covers:
 ### Docker Hub & Deployment
 This project is fully containerized and automatically built and pushed to Docker Hub upon every successful merge to the main branch via GitHub Actions.
 
-View the docker hub repository at: https://hub.docker.com/r/akhalate/fastapi-calculator
+View the docker hub repository at: https://hub.docker.com/r/akhalate/fastapi-calculation-model
 
 You can pull the latest built image directly from Docker Hub to run the application anywhere:
 ```bash
-docker pull akhalate/fastapi-calculator
+docker pull akhalate/fastapi-calculation-model
 ```
 
 To run the containerized application locally (Note: You must pass in your database credentials):
 ```bash
-docker run -p 8000:8000 -e DATABASE_URL="postgresql://postgres:postgres@host.docker.internal:5432/calculator_db" akhalate/fastapi-calculator:latest
+docker run -p 8000:8000 -e DATABASE_URL="postgresql://postgres:postgres@host.docker.internal:5432/calculator_db" akhalate/fastapi-calculation-model:latest
 ```
 
 ### CI/CD Pipeline Architecture
