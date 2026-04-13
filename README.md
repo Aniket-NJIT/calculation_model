@@ -28,8 +28,8 @@ Before you begin, ensure you have the following installed on your machine:
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/Aniket-NJIT/module_10_database_testing.git
-cd module_10_database_testing
+git clone https://github.com/Aniket-NJIT/calculation_model.git
+cd calculation_model
 ```
 ### 2. Set Up a Virtual Environment
 ```bash
