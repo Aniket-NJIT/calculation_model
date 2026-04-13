@@ -1,13 +1,15 @@
-# FastAPI Calculator & Secure User Auth API
+# FastAPI Calculator with Secure User Auth API & Calculation Models
 
 A production-ready FastAPI application featuring a fully functional interactive calculator and a secure user authentication system backed by PostgreSQL. The project includes automated CI/CD pipelines, comprehensive testing, and containerization.
 
 ## Features
 
-* **Calculator API:** Endpoints for addition, subtraction, multiplication, and division with robust error handling (e.g., division by zero).
+* **Calculator API & History:** Endpoints for addition, subtraction, multiplication, and division, with all operations securely saved to the database using a structured `Calculation` model.
+* **Robust Data Validation:** Strict input validation utilizing Pydantic schemas to catch errors (like division by zero or invalid data types) before they ever reach the database or business logic.
+* **Scalable Architecture:** Implements the Factory Design Pattern to cleanly decouple the mathematical calculation logic from the API routing and database layers.
 * **Interactive Frontend:** A clean, HTML/JS frontend to interact with the calculator endpoints.
-* **Secure User Management:** User registration with secure password hashing using `passlib` and `bcrypt`.
-* **PostgreSQL Integration:** Fully integrated relational database setup using SQLAlchemy.
+* **Secure User Management:** User registration with secure password hashing using `passlib` and `bcrypt`, with foreign-key relationships linking users to their calculation history.
+* **PostgreSQL Integration:** Fully integrated relational database setup using SQLAlchemy ORM.
 * **Comprehensive Testing:** Unit, integration, and End-to-End (E2E) testing using `pytest` and `playwright`.
 * **Automated CI/CD:** GitHub Actions pipeline configured for testing, security scanning (Bandit), and automated deployment to Docker Hub.
 
@@ -63,12 +65,15 @@ uvicorn main:app --reload
 ```bash
 pytest
 ```
-The tests covers:
--  test_main.py: Validates API route responses and Pydantic schema validation.
+The test suite covers:
+
+- test_main.py: Validates API route responses and basic Pydantic schema validation for incoming requests.
 
 - test_operations.py: Unit tests for the core mathematical functions.
 
 - test_users.py: Integration tests for user creation, database constraints (duplicate emails), and secure password hashing.
+
+- test_calculations.py: Unit and integration tests validating the Calculation model, the factory pattern logic, and strict Pydantic schema validations (e.g., explicitly preventing division by zero at the schema level).
 
 - test_e2e.py: End-to-End Playwright tests that spin up a headless browser to click through the frontend UI and verify visual outputs.
 
